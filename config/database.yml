@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: time_tracker_dev
+  pool: 5
+  username: 
+  password: 
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: time_tracker_test
+  pool: 5
+  username:
+  password: 
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: time_tracker_production
+  pool: 5
+  username: time_tracker_login
+  password: change_me
