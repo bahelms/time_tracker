@@ -1,3 +1,4 @@
 TimeTracker::Application.routes.draw do
-  root "dashboard#show"
+  devise_for :users
+  root to: "dashboard#show"
 end
