@@ -18,7 +18,7 @@ feature "Signing up for a new account" do
 
   scenario "creates a new account if email and password are valid" do
     signup_with("heybob@foobar.com", "@123abc!")
-    expect(page).to have_content("hdhd")
+    expect(page).to have_content("Welcome! You have signed up successfully.")
   end
 
   scenario "notifies user if the email is invalid" do
