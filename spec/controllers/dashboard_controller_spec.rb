@@ -1,9 +1,8 @@
 require "spec_helper"
 
 describe DashboardController do
-  before do
-    controller.stub(:authenticate!).and_return true
-  end
+  let(:user) { create(:user) }
+  before { @request.env["devise.mapping"] = Devise.mappings[:user] }
 
   describe "GET #show" do
     it "displays the title" do
