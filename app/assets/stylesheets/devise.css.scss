@@ -1,0 +1,33 @@
+@mixin box_shadow_rounded {
+  -moz-box-shadow: 0px 4px 10px 1px #ccc;
+  -webkit-box-shadow: 0px 4px 10px 1px #ccc;
+  box-shadow: 0px 4px 10px 1px #ccc;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #c5c5c5;
+}
+
+#login_wrap {
+  @include box_shadow_rounded;
+  margin-top: 30px;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  #login_form {
+    margin-bottom: 20px;
+    .form-control {
+      width: 65%;
+      margin-bottom: 15px;
+    }
+    #submit_buttons {
+      width: 65%;
+    }
+    #session_links {
+      margin-top: 10px;
+    }
+  }
+}
