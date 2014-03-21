@@ -3,7 +3,7 @@
     <div class="navbar-inner">
       <div class="container-fluid">
         <ul class="nav navbar-nav">
-          <li class="navbar-brand">Time Tracker</li>
+          <%= link_to "Time Tracker", root_path, class: "navbar-brand" %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
