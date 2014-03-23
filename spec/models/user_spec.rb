@@ -5,4 +5,11 @@ describe User do
   subject { user }
 
   it { should be_valid }
+
+  context "without a username" do
+    it "is invalid" do
+      user.username = nil
+      expect(user).not_to be_valid
+    end
+  end
 end

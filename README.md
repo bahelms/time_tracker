@@ -7,5 +7,4 @@ tasks.
 
 TODO
 ----
-
-* Style flash and error messages for signin and signup forms. 
+* Hook up new user field with Devise/Rails 4 strong params
