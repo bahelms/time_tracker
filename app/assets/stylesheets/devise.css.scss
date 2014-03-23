@@ -23,11 +23,36 @@
       width: 65%;
       margin-bottom: 15px;
     }
-    #submit_buttons {
-      width: 65%;
-    }
-    #session_links {
-      margin-top: 10px;
-    }
+    #submit_buttons { width: 65%; }
+    #session_links { margin-top: 10px; }
   }
+}
+
+#edit_account_wrap {
+  @include box_shadow_rounded;
+  margin-top: 30px;
+  h2 { text-align: center; }
+
+  #edit_account_form {
+    margin-bottom: 20px;
+    .second_box { margin-top: -5px; }
+    .form-control {
+      width: 80%;
+      margin-bottom: 15px;
+    }
+    #submit_buttons { width: 65%; }
+    #session_links { margin-top: 10px; }
+    #change_password { 
+      label { margin: 5px 0 -7px 0; }
+    }
+    .btn { margin-top: 5px; }
+  }
+}
+
+#cancel_account {
+  @include box_shadow_rounded;
+  h3 { text-align: center; }
+  text-align: center;
+  margin-top: 30px;
+  padding-bottom: 20px;
 }
