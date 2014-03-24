@@ -10,7 +10,7 @@ feature "Account settings" do
     click_link "Account"
   end
 
-  it { should have_content("Edit User") }
+  it { should have_content("Edit Account") }
   it { should have_field("Email") }
   it { should have_field("Current password") }
 

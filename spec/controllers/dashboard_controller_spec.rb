@@ -2,7 +2,10 @@ require "spec_helper"
 
 describe DashboardController do
   let(:user) { create(:user) }
-  before { @request.env["devise.mapping"] = Devise.mappings[:user] }
+  before do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in user
+  end
 
   describe "GET #show" do
     it "displays the title" do

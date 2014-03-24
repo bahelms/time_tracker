@@ -7,4 +7,4 @@ tasks.
 
 TODO
 ----
-* Hook up new user field with Devise/Rails 4 strong params
+* Fix reset password mailer
