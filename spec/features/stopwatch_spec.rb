@@ -7,10 +7,12 @@ feature "Stopwatch" do
     sign_in_with(email: user.email, password: user.password)
   end
 
-  context "when the Start button is clicked" do
-    scenario "counts upwards each second" do
-      click_button "Start"
-      pending
+  feature "Clicking the start button" do
+    context "without specifying a task" do
+      scenario "counts upwards each second" do
+        click_button "Start"
+        pending
+      end
     end
   end
 end

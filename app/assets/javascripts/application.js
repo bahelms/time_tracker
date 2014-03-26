@@ -15,5 +15,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require role
-//= require dashboard
+//= require stopwatch_class.js
 //= require_tree .

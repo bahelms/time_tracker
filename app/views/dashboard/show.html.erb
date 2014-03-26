@@ -2,8 +2,8 @@
   <div class="col-xs-8 col-xs-offset-2">
     <%= text_field_tag "task", nil, placeholder: "Enter task name here", 
       id: "task_field", role: "task_field" %>
-    <%= button_tag "Start", class: "btn btn-primary", role: "stopwatch", 
+    <%= button_tag "Start", class: "btn btn-primary", role: "stopwatch_button", 
       data: { status: false } %>
-    <%= label_tag "timer", "0 sec", role: "clock" %>
+    <%= label_tag "timer", "0 secs", role: "clock_label" %>
   </div>
 </div>
