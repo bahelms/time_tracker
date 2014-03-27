@@ -4,23 +4,31 @@ jQuery ->
 
 class StopwatchController
   constructor: (@$stopwatchButton) ->
-    @stopwatch = new Stopwatch()
-    @interval = 0
+    @stopwatch = new Stopwatch(@update, 50)
+    @running = false
     @$clock = $("@clock_label")
+    @initialize()
+
+  initialize: ->
     @handleStart()
 
   handleStart: ->
-    self = @
-    @$stopwatchButton.click( ->
-      if self.interval
-        console.log "Stop"
-        self.stopwatch.stop()
-        clearInterval(self.interval)
-      else
-        console.log "Start"
-        self.stopwatch.start()
-        self.interval = setInterval(self.update(), 1000)
+    @$stopwatchButton.click( =>
+      if @running then @stop() else @start()
     )
 
-  update: ->
-    @$clock.html(@stopwatch.toString())
+  start: ->
+    console.log "Start"
+    @$stopwatchButton.html("Stop")
+    @running = true
+    @stopwatch.start()
+
+  stop: ->
+    console.log "Stop"
+    @$stopwatchButton.html("Start")
+    @stopwatch.stop()
+    @running = false
+
+  update: =>
+    ms = parseInt(@stopwatch.getElapsed().milliseconds/100)
+    @$clock.html(@stopwatch.toString() + "." + ms)
