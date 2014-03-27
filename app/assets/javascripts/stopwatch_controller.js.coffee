@@ -18,13 +18,11 @@ class StopwatchController
     )
 
   start: ->
-    console.log "Start"
     @$stopwatchButton.html("Stop")
     @running = true
     @stopwatch.start()
 
   stop: ->
-    console.log "Stop"
     @$stopwatchButton.html("Start")
     @stopwatch.stop()
     @running = false
