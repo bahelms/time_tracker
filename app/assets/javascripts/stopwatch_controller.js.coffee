@@ -5,16 +5,24 @@ jQuery ->
 class StopwatchController
   constructor: (@$stopwatchButton) ->
     @stopwatch = new Stopwatch(@update, 50)
+    @$stopwatchReset = $("@stopwatch_reset")
     @running = false
     @$clock = $("@clock_label")
     @initialize()
 
   initialize: ->
-    @handleStart()
+    @handleStartStop()
+    @handleReset()
 
-  handleStart: ->
+  handleStartStop: ->
     @$stopwatchButton.click( =>
       if @running then @stop() else @start()
+    )
+
+  handleReset: ->
+    @$stopwatchReset.click( =>
+      @stopwatch.reset()
+      @update()
     )
 
   start: ->
