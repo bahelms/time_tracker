@@ -15,12 +15,10 @@ feature "Recording time for a task" do
 
   context "when the task is new" do
     background do
-      binding.pry
       fill_in "task_field", with: "TestTask1"
     end
 
     scenario "creates a task" do
-      binding.pry
       expect { click_button "Start" }.to change(Task, :count).by(1)
     end
   end

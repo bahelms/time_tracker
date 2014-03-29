@@ -1,7 +1,7 @@
 @mixin box_shadow_rounded {
-  -moz-box-shadow: 0px 4px 4px 4px #ccc; 
-  -webkit-box-shadow: 0px 4px 4px 4px #ccc; 
-  box-shadow: 0px 4px 4px 4px #ccc;
+  -moz-box-shadow: 0px 0px 4px 2px #ccc; 
+  -webkit-box-shadow: 0px 0px 4px 2px #ccc; 
+  box-shadow: 0px 0px 4px 2px #ccc;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -17,15 +17,19 @@ body {
   text-align: center;
   .col-xs-1 { 
     padding: 0; 
-    margin-top: 1px;
   }
   #task_field {
     @include box_shadow_rounded;
-    width: 100%;
+    width: 90%;
     padding: 5px 5px 5px 5px;
     margin: 2px 0 2px 0;
   }
   #clock_label {
-    margin-top: 8px;
+    margin: -5px 45px 0 -15px;
+    font-family: "Alegreya Sans", serif;
+    font-size: xx-large;
+ }
+  #reset_button {
+    margin-left: -25px;
   }
 }

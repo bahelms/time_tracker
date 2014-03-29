@@ -4,13 +4,13 @@
       <%= text_field_tag "task", nil, placeholder: "Enter task name here", 
         id: "task_field", role: "task_field" %>
     </div>
-    <div class="col-xs-1">
-      <%= button_tag "Start", class: "btn btn-primary", role: "stopwatch_button" %>
-    </div>
     <div class="col-xs-1" id="clock_label">
       <%= label_tag "timer", "00:00:00.0", role: "clock_label" %>
     </div>
     <div class="col-xs-1">
+      <%= button_tag "Start", class: "btn btn-primary", role: "stopwatch_button" %>
+    </div>
+    <div class="col-xs-1" id="reset_button">
       <%= button_tag "Reset", class: "btn btn-danger", role: "stopwatch_reset" %>
     </div>
   </div>
