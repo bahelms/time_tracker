@@ -5,6 +5,12 @@ class TasksController < ApplicationController
     render text: "success"
   end
 
+  def update
+    task = Task.find(params[:id])
+    task.update_attributes!(task_params)
+    render text: "success"
+  end
+
   private
     def task_params
       params.require(:task).permit(

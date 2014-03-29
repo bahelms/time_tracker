@@ -5,39 +5,39 @@ jQuery ->
 class StopwatchController
   constructor: (@$stopwatchButton) ->
     @stopwatch = new Stopwatch(@update, 50)
+    @taskController = new TaskController(@stopwatch)
     @$stopwatchReset = $("@stopwatch_reset")
-    @running = false
     @$clock = $("@clock_label")
-    @initialize()
+    @running = false
+    @initEvents()
 
-  initialize: ->
+  initEvents: ->
     @handleStartStop()
-    @handleReset()
 
   handleStartStop: ->
     @$stopwatchButton.click( =>
       if @running
         @stop()
-        # Ajax stop_time and duration
+        # Ajax update stop_time and duration
       else
-        new TaskController(@stopwatch).createTask()
+        @taskController.createTask()
         @start()
-    )
-
-  handleReset: ->
-    @$stopwatchReset.click( =>
-      @stopwatch.reset()
-      @update()
     )
 
   start: ->
     @$stopwatchButton.html("Stop")
+    @$stopwatchButton.removeClass("btn-success")
+    @$stopwatchButton.addClass("btn-danger")
     @running = true
     @stopwatch.start()
 
   stop: ->
-    @$stopwatchButton.html("Start")
     @stopwatch.stop()
+    @stopwatch.reset()
+    @update()
+    @$stopwatchButton.html("Start")
+    @$stopwatchButton.removeClass("btn-danger")
+    @$stopwatchButton.addClass("btn-success")
     @running = false
 
   update: =>
