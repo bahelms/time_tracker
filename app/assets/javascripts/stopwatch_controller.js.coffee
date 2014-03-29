@@ -16,7 +16,12 @@ class StopwatchController
 
   handleStartStop: ->
     @$stopwatchButton.click( =>
-      if @running then @stop() else @start()
+      if @running
+        @stop()
+        # Ajax stop_time and duration
+      else
+        new TaskController(@stopwatch).createTask()
+        @start()
     )
 
   handleReset: ->
@@ -38,3 +43,23 @@ class StopwatchController
   update: =>
     ms = parseInt(@stopwatch.getElapsed().milliseconds/100)
     @$clock.html(@stopwatch.toString() + "." + ms)
+
+
+class TaskController
+  constructor: (@stopwatch) ->
+    @name = $("@task_field").val()
+
+  createTask: ->
+    $.ajax(
+      type: "POST"
+      url: "tasks"
+      data: task:
+        name: @name
+        project_id: ""
+        time:
+          start_time: ""
+      success: ->
+        console.log "Success"
+      error: ->
+        console.log "You suck at this"
+    )

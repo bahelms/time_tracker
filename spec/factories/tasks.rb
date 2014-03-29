@@ -1,6 +1,8 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :task do
+    name ""
+    project_id ""
+    user_id ""
+    time ""
   end
 end

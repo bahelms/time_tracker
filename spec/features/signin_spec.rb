@@ -12,7 +12,7 @@ feature "Signing in with an existing account" do
   context "with valid input" do
     scenario "successfully signs in user if email and password are valid" do
       sign_in_with email: user.email, password: user.password
-      expect(page).to have_content("Signed in successfully.")
+      expect(page).not_to have_content("Invalid email or password")
     end
 
     feature "Signing out of a valid session" do
