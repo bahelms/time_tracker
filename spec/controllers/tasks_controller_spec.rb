@@ -15,7 +15,7 @@ describe TasksController do
 
     context "(with time data)" do
       let!(:time_data) do
-        { time: { start_time: "", stop_time: "", duration: 60 } }
+        { start_time: "", stop_time: "", duration: 60 }
       end
 
       before(:each) do
@@ -30,7 +30,7 @@ describe TasksController do
   end
 
   describe "PATCH #update" do
-    let!(:task) { create(:task, user_id: user.id) }
+    let!(:task) { create(:task, user_id: user.id, start_time: "500") }
 
     context "(with a task name)" do
       before(:each) do
@@ -45,12 +45,12 @@ describe TasksController do
     context "(with time data)" do
       let!(:time_data) { { "stop_time" => "", "duration" => "" } }
       before(:each) do
-        patch :update, id: task.id, task: { time: time_data }
+        patch :update, id: task.id, task: time_data
       end
 
       it "updates the time hash" do
         task_time = Task.find(task.id).time
-        expect(task_time).to eq time_data.merge({ "start_time" => task_time[:start_time]})
+        expect(task_time).to eq time_data.merge({ "start_time" => task_time["start_time"]})
       end
     end
   end

@@ -16,7 +16,9 @@ class TasksController < ApplicationController
       params.require(:task).permit(
         :name,
         :project_id,
-        time: [:start_time, :stop_time, :duration]
+        :start_time,
+        :stop_time,
+        :duration
       )
     end
 end

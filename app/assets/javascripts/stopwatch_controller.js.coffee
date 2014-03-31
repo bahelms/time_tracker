@@ -1,6 +1,9 @@
-jQuery ->
+ready = ->
   return unless $("@stopwatch_button").length
   new StopwatchController($("@stopwatch_button"))
+
+jQuery -> ready()
+$(document).on("page:load", ready)
 
 class StopwatchController
   constructor: (@$stopwatchButton) ->
