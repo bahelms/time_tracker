@@ -15,7 +15,7 @@ describe TasksController do
 
     context "(with time data)" do
       let!(:time_data) do
-        { start_time: "", stop_time: "", duration: 60 }
+        { start_time: 500, stop_time: 1000, duration: 60 }
       end
 
       before(:each) do
@@ -26,11 +26,15 @@ describe TasksController do
       it "saves it in an hstore", :focus do
         expect(Task.first.time["duration"].to_i).to eq 60
       end
+
+      it "returns the task id in json" do
+        expect(JSON.parse(response.body)["id"]).to eq Task.last.id
+      end
     end
   end
 
   describe "PATCH #update" do
-    let!(:task) { create(:task, user_id: user.id, start_time: "500") }
+    let!(:task) { create(:task, user_id: user.id, start_time: 500) }
 
     context "(with a task name)" do
       before(:each) do
@@ -43,7 +47,7 @@ describe TasksController do
     end
 
     context "(with time data)" do
-      let!(:time_data) { { "stop_time" => "", "duration" => "" } }
+      let!(:time_data) { { "stop_time" => "203", "duration" => "123" } }
       before(:each) do
         patch :update, id: task.id, task: time_data
       end

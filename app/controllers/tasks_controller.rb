@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
   def create
     task = task_params.merge(user_id: current_user.id)
-    Task.create!(task)
-    render text: "success"
+    task = Task.create!(task)
+    render json: { id: task.id }
   end
 
   def update

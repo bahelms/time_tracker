@@ -19,12 +19,7 @@ class StopwatchController
 
   handleStartStop: ->
     @$stopwatchButton.click( =>
-      if @running
-        @stop()
-        # Ajax update stop_time and duration
-      else
-        @taskController.createTask()
-        @start()
+      if @running then @stop() else @start()
     )
 
   start: ->
@@ -32,11 +27,13 @@ class StopwatchController
     @$stopwatchButton.removeClass("btn-success")
     @$stopwatchButton.addClass("btn-danger")
     @running = true
+    @taskController.createTask()
     @stopwatch.start()
 
   stop: ->
     @stopwatch.stop()
     @stopwatch.reset()
+    @taskController.updateTask()
     @update()
     @$stopwatchButton.html("Start")
     @$stopwatchButton.removeClass("btn-danger")
@@ -51,6 +48,8 @@ class StopwatchController
 class TaskController
   constructor: (@stopwatch) ->
     @name = $("@task_field").val()
+    @startTime = 0
+    @task_id = 0
 
   createTask: ->
     $.ajax(
@@ -59,10 +58,27 @@ class TaskController
       data: task:
         name: @name
         project_id: ""
-        time:
-          start_time: ""
-      success: ->
-        console.log "Success"
+        start_time: @findSeconds()
+      success: (data) =>
+        console.log "Create Success"
+        @task_id = data.id
+        $("@task_field").data("task_id", @task_id)
       error: ->
-        console.log "You suck at this"
+        console.log "You suck at creating"
     )
+
+  updateTask: ->
+    $.ajax(
+      type: "PATCH"
+      url: "tasks/#{@task_id}"
+      data: task:
+        stop_time: ""
+        duration: ""
+      success: ->
+        console.log "Update Success"
+      error: ->
+        console.log "You suck at updating"
+    )
+
+  findSeconds: ->
+    @startTime = Math.round(new Date().getTime()/1000)
