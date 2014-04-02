@@ -49,6 +49,7 @@ class TaskController
   constructor: (@stopwatch) ->
     @name = $("@task_field").val()
     @startTime = 0
+    @stopTime = 0
     @task_id = 0
 
   createTask: ->
@@ -58,7 +59,7 @@ class TaskController
       data: task:
         name: @name
         project_id: ""
-        start_time: @findSeconds()
+        start_time: @startTime = @findSeconds()
       success: (data) =>
         console.log "Create Success"
         @task_id = data.id
@@ -72,13 +73,12 @@ class TaskController
       type: "PATCH"
       url: "tasks/#{@task_id}"
       data: task:
-        stop_time: ""
-        duration: ""
-      success: ->
+        stop_time: @stopTime = @findSeconds()
+        duration: @stopTime - @startTime
+      success: =>
         console.log "Update Success"
       error: ->
         console.log "You suck at updating"
     )
 
-  findSeconds: ->
-    @startTime = Math.round(new Date().getTime()/1000)
+  findSeconds: -> Math.round(new Date().getTime()/1000)
