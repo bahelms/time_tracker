@@ -13,7 +13,15 @@ describe TasksController do
       expect { post :create, task_params }.to change(Task, :count).by(1)
     end
 
+    context "(with a name)" do
+      it "saves the task name" do
+        post :create, task_params
+        expect(Task.last.name).to eq task_params[:task][:name]
+      end
+    end
+
     context "(with time data)" do
+      let(:task) { Task.first }
       let!(:time_data) do
         { start_time: 500, stop_time: 1000, duration: 60 }
       end
@@ -23,8 +31,20 @@ describe TasksController do
         post :create, task_params
       end
 
-      it "saves it in an hstore", :focus do
-        expect(Task.first.time["duration"].to_i).to eq 60
+      it "saves it in an hstore" do
+        expect(task.time).to be_an_instance_of Hash
+      end
+
+      it "saves start_time" do
+        expect(task.start_time.to_i).to eq 500
+      end
+
+      it "saves stop_time" do
+        expect(task.stop_time.to_i).to eq 1000
+      end
+
+      it "saves duration" do
+        expect(task.duration.to_i).to eq 60
       end
 
       it "returns the task id in json" do

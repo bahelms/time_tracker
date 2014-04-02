@@ -15,6 +15,8 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = false
+  config.filter_run_including focus: true
+  config.run_all_when_everything_filtered = true
   config.treat_symbols_as_metadata_keys_with_true_values = true
 
   # If true, the base class of anonymous controllers will be inferred

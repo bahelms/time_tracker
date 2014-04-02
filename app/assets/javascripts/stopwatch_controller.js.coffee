@@ -38,6 +38,7 @@ class StopwatchController
     @$stopwatchButton.html("Start")
     @$stopwatchButton.removeClass("btn-danger")
     @$stopwatchButton.addClass("btn-success")
+    $("@task_field").val("")
     @running = false
 
   update: =>
@@ -47,7 +48,6 @@ class StopwatchController
 
 class TaskController
   constructor: (@stopwatch) ->
-    @name = $("@task_field").val()
     @startTime = 0
     @stopTime = 0
     @task_id = 0
@@ -57,7 +57,7 @@ class TaskController
       type: "POST"
       url: "tasks"
       data: task:
-        name: @name
+        name: $("@task_field").val()
         project_id: ""
         start_time: @startTime = @findSeconds()
       success: (data) =>
