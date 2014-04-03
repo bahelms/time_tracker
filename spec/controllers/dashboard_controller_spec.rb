@@ -5,9 +5,14 @@ describe DashboardController do
   before { sign_in user }
 
   describe "GET #show" do
-    it "displays the title" do
+    before(:each) do
+      4.times { create(:task, user_id: user.id) }
+      2.times { create(:task, user_id: user.id, updated_at: 2.weeks.ago) }
+    end
+
+    it "gets all the tasks for the current week" do
       get :show
-      expect(response).to be_success
+      expect(assigns(:tasks)).to eq Task.first(4)
     end
   end
 end
