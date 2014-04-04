@@ -1,3 +1,7 @@
 <section class="col-xs-12 time_entries_day">
-  
+  <% tasks.each do |task| %>
+    <div>
+      <%= task.start_time %>
+    </div>
+  <% end %>
 </section>
