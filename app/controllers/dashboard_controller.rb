@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   def show
-    @tasks = TaskDecorator.new(user_tasks_for_week).grouped_by_day
+    @tasks = TasksDecorator.new(user_tasks_for_week)
   end
 
   private

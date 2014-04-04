@@ -1,7 +1,13 @@
-<section class="col-xs-12 time_entries_day">
+<section class="col-xs-8 col-xs-offset-2 time_entries_day">
+  <%= render "header", tasks: tasks %>
+
   <% tasks.each do |task| %>
-    <div>
-      <%= task.start_time %>
+    <div class="row-fluid">
+      Task: <%= task.name %> -- 
+      Start Time: <%= task.start_time_formatted %>
+      Stop Time: <%= task.stop_time_formatted %>
+      Duration: <%= task.duration %>
     </div>
+    <hr>
   <% end %>
 </section>

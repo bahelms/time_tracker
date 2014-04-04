@@ -1,14 +1,20 @@
 class TaskDecorator
-  attr_reader :tasks
+  attr_reader :task
+  delegate :id, :name, :time, :start_time, :stop_time, :duration, :user_id,
+           :created_at, :updated_at, to: :task
 
-  def initialize(tasks)
-    @tasks = tasks
+  def initialize(task)
+    @task = task
   end
 
-  def grouped_by_day
-    days = tasks.map { |task| task.updated_at.day }.uniq
-    days.map do |day|
-      tasks.select { |task| task.updated_at.day == day }
-    end
+  def start_time_formatted
+    Time.at(start_time.to_i)
+  end
+
+  def stop_time_formatted
+    Time.at(stop_time.to_i)
+  end
+
+  def duration_formatted
   end
 end
