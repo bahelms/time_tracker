@@ -8,7 +8,7 @@ class TasksController < ApplicationController
   def update
     task = Task.find(params[:id])
     task.update_attributes!(task_params)
-    render text: "success"
+    render partial: "task", locals: { task: TaskDecorator.new(task) }
   end
 
   private

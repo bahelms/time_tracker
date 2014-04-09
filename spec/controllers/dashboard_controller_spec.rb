@@ -13,12 +13,13 @@ describe DashboardController do
     end
 
     it "gets all the tasks for the current week" do
-      expect(assigns(:tasks).flatten.count).to eq 6
+      expect(assigns(:tasks).tasks.flatten.count).to eq 6
     end
 
     it "groups the tasks of the week by day" do
-      expect(assigns(:tasks).first).to eq Task.first(4)
-      expect(assigns(:tasks).last).to eq Task.all.to_a[4..5]
+      tasks_by_day = assigns(:tasks).grouped_by_day
+      expect(tasks_by_day.first.map(&:id)).to eq Task.first(4).map(&:id)
+      expect(tasks_by_day.last.map(&:id)).to eq Task.all.to_a[4..5].map(&:id)
     end
   end
 end
