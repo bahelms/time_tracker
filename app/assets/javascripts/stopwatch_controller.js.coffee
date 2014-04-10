@@ -76,7 +76,6 @@ class TaskController
         stop_time: @stopTime = @findSeconds()
         duration: @stopTime - @startTime
       success: (partial) =>
-        console.log "Update Success"
         $(".header").first().after(partial)
       error: ->
         console.log "You suck at updating"

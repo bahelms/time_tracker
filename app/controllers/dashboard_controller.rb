@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
 
   private
     def user_tasks_for_week
-      week = Time.current.beginning_of_week..Time.current
+      week = Time.current.localtime.beginning_of_week..Time.current.localtime
       Task.where(updated_at: week, user_id: current_user.id)
     end
 end

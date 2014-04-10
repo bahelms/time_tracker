@@ -2,12 +2,6 @@
   <%= render "header", tasks: tasks %>
 
   <% tasks.each do |task| %>
-    <div class="row-fluid" data-id=<%= task.id %>>
-      Task: <%= task.name %> -- 
-      Start Time: <%= task.start_time_formatted %>
-      Stop Time: <%= task.stop_time_formatted %>
-      Duration: <%= task.duration %>
-    </div>
-    <hr>
+    <%= render "tasks/task", task: task %>
   <% end %>
 </section>
