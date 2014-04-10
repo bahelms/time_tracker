@@ -1,7 +1,9 @@
 <section class="col-xs-8 col-xs-offset-2 time_entries_day">
   <%= render "header", tasks: tasks %>
+  <hr>
 
   <% tasks.each do |task| %>
     <%= render "tasks/task", task: task %>
+    <hr>
   <% end %>
 </section>

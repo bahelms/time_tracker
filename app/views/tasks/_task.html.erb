@@ -1,7 +1,6 @@
 <div class="row-fluid" data-id=<%= task.id %>>
   Task: <%= task.name %> -- 
-  Start Time: <%= task.start_time_formatted %>
-  Stop Time: <%= task.stop_time_formatted %>
+  <span><small>Start Time: <%= task.start_time_formatted %></small></span>
+  <span><small>Stop Time: <%= task.stop_time_formatted %></small></span>
   Duration: <%= task.duration %>
 </div>
-<hr>
