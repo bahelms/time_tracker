@@ -15,6 +15,6 @@
 
 <div class="row-fluid" id="time_entry_list">
   <% @tasks.grouped_by_day.each do |tasks_by_day| %>
-    <%= render "task_list", tasks: tasks_by_day %>
+    <%= render "tasks/task_list", tasks: tasks_by_day %>
   <% end %>
 </div>

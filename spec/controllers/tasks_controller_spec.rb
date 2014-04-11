@@ -77,5 +77,21 @@ describe TasksController do
         expect(task_time).to eq time_data.merge({ "start_time" => task_time["start_time"]})
       end
     end
+
+    context "(when a day has only one task" do
+      it "renders the partial for the whole day" do
+        pending "Need to change where coffeescript injects this partial"
+      end
+    end
+
+    context "(when a day has more than one task)" do
+      let(:task2) { create(:task, user_id: user.id, start_time: 1000) }
+
+      it "renders a partial for the latest task" do
+        expect do
+          patch :update, id: task2.id, task: time_data
+        end.to render_template partial: "_task"
+      end
+    end
   end
 end

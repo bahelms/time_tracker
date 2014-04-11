@@ -23,14 +23,17 @@ class TasksController < ApplicationController
     end
 
     def render_partial(task)
-      render partial: "task", locals: { task: TaskDecorator.new(task) }
+      if more_than_one_task?(task)
+        render partial: "task", locals: { task: TaskDecorator.new(task) }
+      else
+        render partial: "task_list", locals: { tasks: [TaskDecorator.new(task)] }
+      end
     end
 
     def more_than_one_task?(task)
       time = task.updated_at.localtime
       range = time.beginning_of_day..time.end_of_day
       task_times = Task.select(:updated_at).map { |t| t.updated_at.localtime }
-      tasks = task_times.select { |t| range.cover?(t) }
-      tasks.size > 1 ? true : false
+      task_times.select { |t| range.cover?(t) }.size > 1 ? true : false
     end
 end
