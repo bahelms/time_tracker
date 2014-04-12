@@ -55,6 +55,7 @@ describe TasksController do
 
   describe "PATCH #update" do
     let!(:task) { create(:task, user_id: user.id, start_time: 500) }
+    let!(:time_data) { { "stop_time" => "203", "duration" => "123" } }
 
     context "(with a task name)" do
       before(:each) do
@@ -67,7 +68,6 @@ describe TasksController do
     end
 
     context "(with time data)" do
-      let!(:time_data) { { "stop_time" => "203", "duration" => "123" } }
       before(:each) do
         patch :update, id: task.id, task: time_data
       end
@@ -79,13 +79,18 @@ describe TasksController do
     end
 
     context "(when a day has only one task)" do
+      before(:each) { patch :update, id: task.id, task: time_data }
+
       it "renders the partial for the whole day" do
-        pending "Need to change where coffeescript injects this partial"
+        expect do
+          patch :update, id: task.id, task: time_data
+        end.to render_template partial: "_task_list"
       end
     end
 
     context "(when a day has more than one task)" do
       let(:task2) { create(:task, user_id: user.id, start_time: 1000) }
+      before(:each) { patch :update, id: task2.id, task: time_data }
 
       it "renders a partial for the latest task" do
         expect do
