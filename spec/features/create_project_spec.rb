@@ -8,6 +8,5 @@ feature "Creating a new project" do
   end
 
   scenario "" do
-    pending
   end
 end

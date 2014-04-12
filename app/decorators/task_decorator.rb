@@ -17,8 +17,10 @@ class TaskDecorator
   end
 
   def duration_formatted
-    minutes = duration.to_i / 60
-    hours = minutes / 60.0
+    hours = duration.to_i / 3600
+    minutes = duration.to_i - hours * 60
+    secs = duration.to_i - (minutes*60 + hours*3600)
+    "#{hours}:#{minutes}:#{secs}"
   end
 
   private

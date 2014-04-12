@@ -51,6 +51,7 @@ class TaskController
     @startTime = 0
     @stopTime = 0
     @task_id = 0
+    @$tasks = $("@tasks")
 
   createTask: ->
     $.ajax(
@@ -76,7 +77,7 @@ class TaskController
         stop_time: @stopTime = @findSeconds()
         duration: @stopTime - @startTime
       success: (partial) =>
-        $(".header").first().after(partial)
+        @$tasks.first().prepend(partial)
       error: ->
         console.log "You suck at updating"
     )

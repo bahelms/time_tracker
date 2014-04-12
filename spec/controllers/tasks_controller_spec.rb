@@ -78,7 +78,7 @@ describe TasksController do
       end
     end
 
-    context "(when a day has only one task" do
+    context "(when a day has only one task)" do
       it "renders the partial for the whole day" do
         pending "Need to change where coffeescript injects this partial"
       end
