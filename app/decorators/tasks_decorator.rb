@@ -12,11 +12,6 @@ class TasksDecorator
     end
   end
 
-  def get_date_for(tasks_by_day)
-    date = tasks_by_day.first.updated_at.localtime
-    date.today? ? "Today" : date.strftime("%a, %b %-d")
-  end
-
   private
     def decorate(tasks)
       tasks.map { |task| TaskDecorator.new(task) }

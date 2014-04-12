@@ -77,9 +77,15 @@ class TaskController
         stop_time: @stopTime = @findSeconds()
         duration: @stopTime - @startTime
       success: (partial) =>
-        @$tasks.first().prepend(partial)
+        @injectPartial(partial)
       error: ->
         console.log "You suck at updating"
     )
 
   findSeconds: -> Math.round(new Date().getTime()/1000)
+
+  injectPartial: (partial) ->
+    if partial.indexOf("section", 0) >= 0
+      $("@time_entries_day").first().before(partial)
+    else
+      $("@tasks").first().before(partial)
