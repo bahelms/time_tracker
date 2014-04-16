@@ -17,14 +17,18 @@ class TaskDecorator
   end
 
   def duration_formatted
-    hours = duration.to_i / 3600
-    minutes = duration.to_i/60 - hours*60
-    secs = duration.to_i % 60
+    hours =   digits(duration.to_i / 3600)
+    minutes = digits(duration.to_i/60 - hours.to_i*60)
+    secs =    digits(duration.to_i % 60)
     "#{hours}:#{minutes}:#{secs}"
   end
 
   private
     def set_name
       task.name.blank? ? "(unknown task)" : task.name
+    end
+
+    def digits(num)
+      num < 10 ? "0#{num}" : num
     end
 end

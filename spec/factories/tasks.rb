@@ -4,5 +4,8 @@ FactoryGirl.define do
     project_id ""
     user_id ""
     time ""
+    start_time ""
+    stop_time ""
+    duration ""
   end
 end
