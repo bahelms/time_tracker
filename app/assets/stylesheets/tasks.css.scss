@@ -8,7 +8,10 @@
 
 .task {
   font-family: "Open Sans", serif;
+  #time_span {
+    text-align: right;
+  }
   #task_duration {
-    margin-right: 30px;
+    text-align: right;
   }
 }

@@ -1,8 +1,11 @@
-<div class="row-fluid task" data-id=<%= task.id %> role="tasks">
-  Task: <%= task.name %>
-  <span class="pull-right"><small><%= task.stop_time_formatted %></small></span>
-  <span class="pull-right">&nbsp; -- &nbsp;</span>
-  <span class="pull-right"><small><%= task.start_time_formatted %></small></span>
-  <span class="pull-right" id="task_duration"><%= task.duration_formatted %></span>
+<div class="row task" data-id=<%= task.id %> role="tasks">
+  <div class="col-xs-7">
+    Task: <%= task.name %>
+  </div>
+  <div class="col-xs-2" id="task_duration">
+    <%= task.duration_formatted %>
+  </div>
+  <div class="col-xs-3" id="time_span">
+    <small><%= task.time_span %></small>
+  </div>
 </div>
-<hr>

@@ -1,4 +1,4 @@
-<div class="row-fluid">
+<div class="row">
   <div class="col-xs-12" id="stopwatch">
     <div class="col-xs-5 col-xs-offset-2">
       <%= text_field_tag "task", nil, placeholder: "Enter task name here", 
@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<div class="row-fluid" id="time_entry_list" role="time_entry_list">
+<div class="row" id="time_entry_list" role="time_entry_list">
   <% @tasks.grouped_by_day.each do |tasks_by_day| %>
     <%= render "tasks/task_list", tasks: tasks_by_day %>
   <% end %>

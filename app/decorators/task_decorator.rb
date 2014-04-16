@@ -8,12 +8,8 @@ class TaskDecorator
     @name = set_name
   end
 
-  def start_time_formatted
-    Time.at(start_time.to_i).strftime("%l:%M:%S %p")
-  end
-
-  def stop_time_formatted
-    Time.at(stop_time.to_i).strftime("%l:%M:%S %p")
+  def time_span
+    "#{start_time_formatted} -- #{stop_time_formatted}"
   end
 
   def duration_formatted
@@ -30,5 +26,13 @@ class TaskDecorator
 
     def digits(num)
       num < 10 ? "0#{num}" : num
+    end
+
+    def start_time_formatted
+      Time.at(start_time.to_i).strftime("%l:%M:%S %p")
+    end
+
+    def stop_time_formatted
+      Time.at(stop_time.to_i).strftime("%l:%M:%S %p")
     end
 end
