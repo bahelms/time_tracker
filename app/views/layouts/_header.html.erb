@@ -5,8 +5,12 @@
         <ul class="nav navbar-nav">
           <%= link_to "Time Tracker", root_path, class: "navbar-brand" %>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Projects", "#" %></li>
+          <li><%= link_to "Reports", "#" %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
           <li>
             <%= link_to "Account", edit_user_registration_path(current_user) %>
           </li>

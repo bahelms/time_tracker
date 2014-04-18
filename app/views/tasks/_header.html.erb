@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-xs-12 header">
-    <%= get_date_for(tasks) %>
+    <%= link_to tasks.first.date_formatted, "#collapse#{num}", 
+      data: { toggle: "collapse" } %>
   </div>
 </div>

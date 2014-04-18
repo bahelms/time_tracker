@@ -19,6 +19,15 @@ class TaskDecorator
     "#{hours}:#{minutes}:#{secs}"
   end
 
+  def date_formatted
+    date = updated_at.localtime
+    date.today? ? "Today" : date.strftime("%a, %b %-d")
+  end
+
+  def collapsed?
+    "in" if updated_at.localtime.today?
+  end
+
   private
     def set_name
       task.name.blank? ? "(unknown task)" : task.name

@@ -1,17 +1,27 @@
-.header {
-  font-size: large;
-}
-
-.task_list {
-  margin-top: 5px;
-}
-
-.task {
-  font-family: "Open Sans", serif;
-  #time_span {
-    text-align: right;
+.time_entries_day {
+  margin-top: 30px;
+  .well {
+    margin-bottom: 5px;
   }
-  #task_duration {
-    text-align: right;
+  .header {
+    font-size: large;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+  .task_list {
+    margin-top: 5px;
+  }
+
+  .task {
+    font-family: "Open Sans", serif;
+    #time_span {
+      text-align: right;
+    }
+    #task_duration {
+      text-align: right;
+    }
   }
 }
