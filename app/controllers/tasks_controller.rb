@@ -26,7 +26,8 @@ class TasksController < ApplicationController
       if more_than_one_task?(task)
         render partial: "task", locals: { task: TaskDecorator.new(task) }
       else
-        render partial: "task_list", locals: { tasks: [TaskDecorator.new(task)] }
+        render partial: "task_list",
+          locals: { tasks: [TaskDecorator.new(task)], num: 1 }
       end
     end
 

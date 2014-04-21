@@ -7,9 +7,8 @@ tasks.
 
 TODO
 ----
-* Collapse previous days automatically
-
 * Projects
 * Reporting
+* JS tests
 * Fix reset password mailer
 * Use unicorn server
