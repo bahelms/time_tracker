@@ -4,9 +4,9 @@ describe ProjectsController do
   let(:project) { build(:project) }
   subject { response }
 
-  describe "GET #new" do
-    it "renders the new template" do
-      get :new
+  describe "GET #index" do
+    it "renders the index template" do
+      get :index
       expect(subject).to render_template "new"
     end
   end
