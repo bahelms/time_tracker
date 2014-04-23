@@ -9,6 +9,9 @@ TODO
 ----
 * Projects
 * Reporting
+* Manual time setting
+* Delete Tasks
+
 * JS tests
 * Fix reset password mailer
 * Use unicorn server

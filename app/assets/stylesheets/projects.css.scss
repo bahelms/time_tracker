@@ -1,3 +1,21 @@
-// Place all the styles related to the projects controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@mixin box_shadow_rounded {
+  -moz-box-shadow: 0px 0px 4px 2px #ccc; 
+  -webkit-box-shadow: 0px 0px 4px 2px #ccc; 
+  box-shadow: 0px 0px 4px 2px #ccc;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #c5c5c5;
+}
+
+#projects {
+  #create_new_project {
+    margin-top: 30px;
+    #project_field {
+      @include box_shadow_rounded;
+      width: 90%;
+      padding: 5px 5px 5px 5px;
+      margin: 2px 0 2px 0;
+    }
+  }
+}
