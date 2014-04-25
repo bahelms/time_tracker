@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+jQuery ->
+  return unless $("@projects").length
+  new ProjectsController($("@project_name"))
+
+class ProjectsController
+  constructor: (@$form) ->
+    @$createButton = $("@create_project_button")
+    @handleCreate()
+
+  handleCreate: ->
+    @$createButton.click( =>
+      @$form.validate()
+    )
