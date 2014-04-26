@@ -1,0 +1,3 @@
+<% @tasks.grouped_by_day.each_with_index do |tasks_by_day, index| %>
+  <%= render "tasks/task_list", tasks: tasks_by_day, num: index+1 %>
+<% end %>

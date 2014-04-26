@@ -1,10 +1,11 @@
 class ProjectsController < ApplicationController
   def index
+    @projects = Project.all
   end
 
   def create
     Project.create!(project_params)
-    render partial: ""
+    render partial: "project"
   end
 
   private

@@ -88,6 +88,5 @@ class TaskController
   injectPartial: (partial) ->
     if partial.indexOf("section", 0) >= 0
       $("@time_entry_list").prepend(partial)
-      # $("@time_entries_day").first().before(partial)
     else
       $("@tasks").first().before(partial)

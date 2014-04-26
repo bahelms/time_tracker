@@ -13,6 +13,8 @@
   </div>
 
   <div class="row" role="projects_list">
-    <%= render "projects" %>
+    <% @projects.each do |project| %>
+      <%= render "project", project: project %>
+    <% end %>
   </div>
 </section>

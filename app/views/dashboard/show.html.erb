@@ -14,9 +14,7 @@
 </div>
 
 <div class="row" id="time_entry_list" role="time_entry_list">
-  <% @tasks.grouped_by_day.each_with_index do |tasks_by_day, index| %>
-    <%= render "tasks/task_list", tasks: tasks_by_day, num: index+1 %>
-  <% end %>
+  <%= render "tasks/all_tasks_for_week" %>
 </div>
 
 <div class="row" id="graph_footer">

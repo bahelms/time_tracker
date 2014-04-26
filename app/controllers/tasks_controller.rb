@@ -8,7 +8,8 @@ class TasksController < ApplicationController
   def update
     task = Task.find(params[:id])
     task.update_attributes!(task_params)
-    render_partial(task)
+    # render_partial(task)
+    render_partial(TasksDecorator.new(current_user))
   end
 
   private
@@ -22,13 +23,13 @@ class TasksController < ApplicationController
       )
     end
 
-    def render_partial(task)
-      if more_than_one_task?(task)
-        render partial: "task", locals: { task: TaskDecorator.new(task) }
-      else
-        render partial: "task_list",
-          locals: { tasks: [TaskDecorator.new(task)], num: 1 }
-      end
+    def render_partial(tasks)
+      # if more_than_one_task?(task)
+      #   render partial: "task", locals: { task: TaskDecorator.new(task) }
+      # else
+      #   render partial: "task_list",
+      #     locals: { tasks: [TaskDecorator.new(task)], num: 1 }
+      # end
     end
 
     def more_than_one_task?(task)

@@ -16,4 +16,9 @@ class TasksDecorator
     def decorate(tasks)
       tasks.map { |task| TaskDecorator.new(task) }
     end
+
+    def user_tasks_for_week
+      week = Time.current.localtime.beginning_of_week..Time.current.localtime
+      Task.where(updated_at: week, user_id: current_user.id)
+    end
 end
