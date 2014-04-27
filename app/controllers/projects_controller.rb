@@ -4,8 +4,8 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    Project.create!(project_params)
-    render partial: "project"
+    project = Project.create!(project_params)
+    render partial: "project", locals: { project: project }
   end
 
   private

@@ -18,9 +18,7 @@ class StopwatchController
     @handleStartStop()
 
   handleStartStop: ->
-    @$stopwatchButton.click( =>
-      if @running then @stop() else @start()
-    )
+    @$stopwatchButton.click( => if @running then @stop() else @start())
 
   start: ->
     @$stopwatchButton.html("Stop")
@@ -62,7 +60,6 @@ class TaskController
         project_id: ""
         start_time: @startTime = @findSeconds()
       success: (data) =>
-        console.log "Create Success"
         @task_id = data.id
         $("@task_field").data("task_id", @task_id)
       error: ->
@@ -76,17 +73,10 @@ class TaskController
       data: task:
         stop_time: @stopTime = @findSeconds()
         duration: @stopTime - @startTime
-      success: (partial) =>
-        console.log partial
-        @injectPartial(partial)
+      success: (partial) ->
+        $("@time_entry_list").html(partial)
       error: ->
         console.log "You suck at updating"
     )
 
   findSeconds: -> Math.round(new Date().getTime()/1000)
-
-  injectPartial: (partial) ->
-    if partial.indexOf("section", 0) >= 0
-      $("@time_entry_list").prepend(partial)
-    else
-      $("@tasks").first().before(partial)

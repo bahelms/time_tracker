@@ -8,6 +8,7 @@ class ProjectsController
     @handleCreate()
 
   handleCreate: ->
-    @$createButton.click( =>
+    @$createButton.click( (e) =>
+      e.preventDefault()
       @$form.validate()
     )

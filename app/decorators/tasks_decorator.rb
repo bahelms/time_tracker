@@ -2,7 +2,7 @@ class TasksDecorator
   attr_reader :tasks
 
   def initialize(tasks)
-    @tasks = decorate(tasks)
+    @tasks = decorate(tasks_for_week(tasks))
   end
 
   def grouped_by_day
@@ -17,8 +17,8 @@ class TasksDecorator
       tasks.map { |task| TaskDecorator.new(task) }
     end
 
-    def user_tasks_for_week
+    def tasks_for_week(tasks)
       week = Time.current.localtime.beginning_of_week..Time.current.localtime
-      Task.where(updated_at: week, user_id: current_user.id)
+      tasks.where(updated_at: week)
     end
 end

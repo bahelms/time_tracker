@@ -78,25 +78,9 @@ describe TasksController do
       end
     end
 
-    context "(when a day has only one task)" do
-      before(:each) { patch :update, id: task.id, task: time_data }
-
-      it "renders the partial for the whole day" do
-        expect do
-          patch :update, id: task.id, task: time_data
-        end.to render_template partial: "_task_list"
-      end
-    end
-
-    context "(when a day has more than one task)" do
-      let(:task2) { create(:task, user_id: user.id, start_time: 1000) }
-      before(:each) { patch :update, id: task2.id, task: time_data }
-
-      it "renders a partial for the latest task" do
-        expect do
-          patch :update, id: task2.id, task: time_data
-        end.to render_template partial: "_task"
-      end
+    it "renders the partial for all the tasks in the current week" do
+      patch :update, id: task.id, task: time_data
+      expect(response).to render_template partial: "_all_tasks_for_week"
     end
   end
 end
