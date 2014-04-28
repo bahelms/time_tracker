@@ -11,9 +11,9 @@ feature "Viewing all projects" do
     click_link "Projects"
   end
 
-  it "displays all projects for user" do
-    Project.all.each do |project|
-      expect(subject).to have_content project.name
-    end
+  scenario "displays all projects for user" do
+    names = Project.where(user_id: user.id).map(&:name)
+    content = names.map { |name| page.has_content? name }
+    expect(content.include? false).to eq false
   end
 end

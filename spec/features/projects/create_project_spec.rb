@@ -4,9 +4,7 @@ feature "Creating a new project" do
   let!(:user) { create(:user) }
   let(:project_name) { "Test Project Feature" }
   background do
-    visit root_path
-    sign_in_with(email: user.email, password: user.password)
-    click_link "Projects"
+    visit_projects_page
   end
 
   context "without a name" do
@@ -29,5 +27,4 @@ feature "Creating a new project" do
       expect(page).to have_content "Project: #{project_name}"
     end
   end
-
 end

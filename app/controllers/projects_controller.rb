@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    project = Project.create!(project_params)
+    project = Project.create!(project_params.merge(user_id: current_user.id))
     render partial: "project", locals: { project: project }
   end
 
