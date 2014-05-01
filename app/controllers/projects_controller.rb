@@ -8,6 +8,9 @@ class ProjectsController < ApplicationController
     render partial: "project", locals: { project: project }
   end
 
+  def destroy
+  end
+
   private
     def project_params
       params.require(:project).permit(:name)
