@@ -10,7 +10,7 @@ class ProjectsController
     @handleCreate()
 
   handleCreate: ->
-    @$createButton.click( (e) =>
+    @$createButton.click (e) =>
       @$form.validate()
       if @$form.valid()
         e.preventDefault()
@@ -23,4 +23,3 @@ class ProjectsController
             @$projectsList.prepend(partial)
           error: -> "You suck at creating projects"
         )
-    )

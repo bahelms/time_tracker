@@ -35,6 +35,7 @@ describe ProjectsController do
 
   describe "DELETE #destroy" do
     let!(:project) { create(:project, user_id: user.id) }
+
     it "deletes the project" do
       expect do
         delete :destroy, id: project.id

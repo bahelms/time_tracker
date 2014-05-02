@@ -9,6 +9,8 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    Project.find(params[:id]).destroy
+    render text: "Success"
   end
 
   private
