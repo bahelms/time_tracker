@@ -9,7 +9,7 @@ feature "Deleting Projects" do
 
   feature "Clicking the delete button" do
     scenario "deletes that project" do
-      click_button "Delete"
+      click_link "Delete"
       expect(page).not_to have_content project.name
     end
   end

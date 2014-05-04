@@ -9,9 +9,7 @@ feature "Creating a new project" do
 
   context "without a name" do
     scenario "does not create a project" do
-      # click_button "Create New Project"
-      # expect(page).to have_content "Please fill out this field"
-      pending "This tests jquery validate. Test not working. Maybe need JS test."
+      expect { click_button "Create New Project" }.to raise_exception
     end
   end
 

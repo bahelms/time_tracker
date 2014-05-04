@@ -7,7 +7,9 @@ class ProjectsController
     @$createButton = $("@create_project_button")
     @$projectNameField = $("@project_name_field")
     @$projectsList = $("@projects_list")
+    @$deleteButton = $("@delete_project")
     @handleCreate()
+    @handleDelete()
 
   handleCreate: ->
     @$createButton.click (e) =>
@@ -23,3 +25,7 @@ class ProjectsController
             @$projectsList.prepend(partial)
           error: -> "You suck at creating projects"
         )
+
+  handleDelete: ->
+    @$projectsList.on "click", @$deleteButton, (e) ->
+      $(e.target).parents(".project").remove()
