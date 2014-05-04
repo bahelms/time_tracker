@@ -7,7 +7,7 @@ $(document).on("page:load", ready)
 
 class StopwatchController
   constructor: (@$stopwatchButton) ->
-    @stopwatch = new Stopwatch(@update, 50)
+    @stopwatch = new Stopwatch(@updateClock, 50)
     @taskController = new TaskController(@stopwatch)
     @$stopwatchReset = $("@stopwatch_reset")
     @$clock = $("@clock_label")
@@ -32,14 +32,17 @@ class StopwatchController
     @stopwatch.stop()
     @stopwatch.reset()
     @taskController.updateTask()
-    @update()
+    @resetStopwatchView()
+    @running = false
+
+  resetStopwatchView: ->
+    @updateClock()
     @$stopwatchButton.html("Start")
     @$stopwatchButton.removeClass("btn-danger")
     @$stopwatchButton.addClass("btn-success")
     $("@task_field").val("")
-    @running = false
 
-  update: =>
+  updateClock: =>
     ms = parseInt(@stopwatch.getElapsed().milliseconds/100)
     @$clock.html(@stopwatch.toString() + "." + ms)
 
@@ -73,6 +76,7 @@ class TaskController
       data: task:
         stop_time: @stopTime = @findSeconds()
         duration: @stopTime - @startTime
+        project_id: $("@select_project").val()
       success: (partial) ->
         $("@time_entry_list").html(partial)
       error: ->

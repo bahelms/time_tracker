@@ -11,4 +11,12 @@ describe TaskDecorator do
       end
     end
   end
+
+  describe "#project_name" do
+    context "(when project ID is nil)" do
+      it "sets project name to nil" do
+        expect(decorator.project_name).to eq nil
+      end
+    end
+  end
 end

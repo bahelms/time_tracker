@@ -1,4 +1,4 @@
-def create_projects
+def create_projects(user)
   5.times { create(:project, user_id: user.id) }
 end
 

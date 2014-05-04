@@ -1,7 +1,7 @@
 class TaskDecorator
   attr_reader :task, :name
   delegate :id, :time, :start_time, :stop_time, :duration, :user_id,
-           :created_at, :updated_at, to: :task
+           :created_at, :updated_at, :project, to: :task
 
   def initialize(task)
     @task = task

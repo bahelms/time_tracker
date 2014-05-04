@@ -8,7 +8,7 @@ describe ProjectsController do
 
   describe "GET #index" do
     before(:each) do
-      create_projects
+      create_projects(user)
     end
 
     it "renders the index page" do

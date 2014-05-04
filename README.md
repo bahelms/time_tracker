@@ -7,11 +7,15 @@ tasks.
 
 TODO
 ----
-* Projects
 * Reporting
 * Manual time setting
-* Delete Tasks
-
-* JS tests
+* Delete Tasks?
 * Fix reset password mailer
 * Use unicorn server
+
+
+Test
+----
+* JS tests
+* Decorators
+* Dashboard stopwatch feature

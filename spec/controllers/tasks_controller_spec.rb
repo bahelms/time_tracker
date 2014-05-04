@@ -56,6 +56,7 @@ describe TasksController do
   describe "PATCH #update" do
     let!(:task) { create(:task, user_id: user.id, start_time: 500) }
     let!(:time_data) { { "stop_time" => "203", "duration" => "123" } }
+    let(:project) { }
 
     context "(with a task name)" do
       before(:each) do
@@ -74,7 +75,18 @@ describe TasksController do
 
       it "updates the time hash" do
         task_time = Task.find(task.id).time
-        expect(task_time).to eq time_data.merge({ "start_time" => task_time["start_time"]})
+        start_time = { "start_time" => task_time["start_time"] }
+        expect(task_time).to eq time_data.merge(start_time)
+      end
+    end
+
+    context "(with a project)" do
+      before(:each) do
+        patch :update, id: task.id, task: time_data, project_id: ""
+      end
+
+      it "updates the project ID" do
+        expect(task.reload.project_id).not_to eq nil
       end
     end
 
