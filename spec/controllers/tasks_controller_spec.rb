@@ -81,12 +81,14 @@ describe TasksController do
     end
 
     context "(with a project)" do
+      let(:project_data) { time_data.merge({ project_id: 23 }) }
+
       before(:each) do
-        patch :update, id: task.id, task: time_data, project_id: ""
+        patch :update, id: task.id, task: project_data
       end
 
       it "updates the project ID" do
-        expect(task.reload.project_id).not_to eq nil
+        expect(task.reload.project_id).to eq 23
       end
     end
 

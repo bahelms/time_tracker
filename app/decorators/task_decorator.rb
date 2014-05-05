@@ -28,6 +28,10 @@ class TaskDecorator
     "in" if updated_at.localtime.today?
   end
 
+  def project_name
+    task.project ? task.project.name : nil
+  end
+
   private
     def set_name
       task.name.blank? ? "(unknown task)" : task.name

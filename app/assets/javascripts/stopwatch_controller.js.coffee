@@ -11,6 +11,7 @@ class StopwatchController
     @taskController = new TaskController(@stopwatch)
     @$stopwatchReset = $("@stopwatch_reset")
     @$clock = $("@clock_label")
+    @$projectSelect = $("@select_project")
     @running = false
     @initEvents()
 
@@ -40,6 +41,7 @@ class StopwatchController
     @$stopwatchButton.html("Start")
     @$stopwatchButton.removeClass("btn-danger")
     @$stopwatchButton.addClass("btn-success")
+    @$projectSelect.val("")
     $("@task_field").val("")
 
   updateClock: =>
