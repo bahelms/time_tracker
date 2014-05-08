@@ -12,6 +12,7 @@ TODO
 * Delete Tasks?
 * Fix reset password mailer
 * Use unicorn server
+* Refactor dashboard out and default to task controller
 
 
 Test

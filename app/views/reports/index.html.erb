@@ -1,0 +1,28 @@
+<section id="reports">
+  <div class="row">
+    <div class="col-xs-3 col-xs-offset-4">
+      Total time for week:
+    </div>
+    <div class="col-xs-1">
+      <%= @presenter.weekly_total %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3 col-xs-offset-4">
+      Time remaining for 40 hours:
+    </div>
+    <div class="col-xs-1">
+      <%= @presenter.time_remaining_for_week %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3 col-xs-offset-4">
+      Monthly total:
+    </div>
+    <div class="col-xs-1">
+      <%= @presenter.monthly_total %>
+    </div>
+  </div>
+</section>
