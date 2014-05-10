@@ -64,6 +64,7 @@ class TaskController
         name: $("@task_field").val()
         project_id: ""
         start_time: @startTime = @findSeconds()
+        duration: 0
       success: (data) =>
         @task_id = data.id
         $("@task_field").data("task_id", @task_id)

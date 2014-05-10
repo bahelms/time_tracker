@@ -15,14 +15,14 @@ describe TasksDecorator do
   describe "#tasks" do
     it "gets all the tasks for the current week" do
       if monday?
-        expect(decorator.tasks.count).to eq 4
+        expect(decorator.decorated_tasks.count).to eq 4
       else
-        expect(decorator.tasks.count).to eq 6
+        expect(decorator.decorated_tasks.count).to eq 6
       end
     end
 
     it "decorates each task" do
-      expect(decorator.tasks.first).to be_an_instance_of TaskDecorator
+      expect(decorator.decorated_tasks.first).to be_an_instance_of TaskDecorator
     end
   end
 
