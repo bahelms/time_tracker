@@ -1,6 +1,5 @@
-[![Build Status](https://travis-ci.org/bahelms/time_tracker.svg?branch=master)](https://travis-ci.org/bahelms/time_tracker)
 
-Time Tracker
+Time Tracker [![Build Status](https://travis-ci.org/bahelms/time_tracker.svg?branch=master)](https://travis-ci.org/bahelms/time_tracker)
 ----
 
 Time Tracker is an app that allows you to keep track of the time you spend on 
