@@ -1,15 +1,16 @@
 class TasksDecorator
-  attr_reader :tasks, :decorated_tasks
+  attr_reader :tasks, :tasks_for_week, :tasks_for_month
 
   def initialize(tasks)
     @tasks = tasks
-    @decorated_tasks = decorate(tasks_for_week(tasks))
+    @tasks_for_week = decorate(tasks_for(:week))
+    @tasks_for_month = decorate(tasks_for(:month))
   end
 
   def grouped_by_day
-    days = decorated_tasks.map { |task| task.updated_at.localtime.day }.uniq
+    days = tasks_for_week.map { |task| task.updated_at.localtime.day }.uniq
     days.map do |day|
-      decorated_tasks.select { |task| task.updated_at.localtime.day == day }
+      tasks_for_week.select { |task| task.updated_at.localtime.day == day }
     end
   end
 
@@ -18,8 +19,9 @@ class TasksDecorator
       tasks.map { |task| TaskDecorator.new(task) }
     end
 
-    def tasks_for_week(tasks)
-      week = Time.current.localtime.beginning_of_week..Time.current.localtime
-      tasks.where(updated_at: week)
+    def tasks_for(time)
+      range = Time.current.localtime.send("beginning_of_#{time}")..
+        Time.current.localtime
+      tasks.where(updated_at: range)
     end
 end

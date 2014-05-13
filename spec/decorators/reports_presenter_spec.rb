@@ -12,7 +12,7 @@ describe ReportsPresenter do
 
   describe "#provider" do
     it "spec_name" do
-      pending
+      expect(subject.provider).to be_an_instance_of TasksDecorator
     end
   end
 
@@ -36,10 +36,5 @@ describe ReportsPresenter do
 
   def task_params(time)
     { user_id: user.id, duration: 10000, updated_at: time }
-  end
-
-  def find_monthly_total_for_test
-    Task.where("updated_at >= ?", Time.current.beginning_of_month).
-      map(&:duration).map(&:to_i).reduce(&:+)
   end
 end
