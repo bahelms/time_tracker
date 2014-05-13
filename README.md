@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bahelms/time_tracker.svg?branch=master)](https://travis-ci.org/bahelms/time_tracker)
+
 Time Tracker
 ----
 
@@ -7,8 +9,8 @@ tasks.
 
 TODO
 ----
-* Reporting
 * Manual time setting
+* Boolean for logged time
 * Delete Tasks?
 * Fix reset password mailer
 * Use unicorn server
@@ -18,5 +20,6 @@ TODO
 Test
 ----
 * JS tests
-* Decorators
+* Task Decorator
+* Time Presenter
 * Dashboard stopwatch feature
