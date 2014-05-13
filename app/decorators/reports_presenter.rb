@@ -15,6 +15,10 @@ class ReportsPresenter
     pretty_time(FORTY_HOURS - total_seconds_for_week)
   end
 
+  def monthly_total
+    pretty_time()
+  end
+
   private
     def duration_sum
       secs = provider.decorated_tasks.compact.map(&:duration).map(&:to_i).reduce(&:+)

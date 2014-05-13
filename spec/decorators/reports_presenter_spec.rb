@@ -30,12 +30,16 @@ describe ReportsPresenter do
 
   describe "#monthly_total" do
     it "gives the total task time for the current month" do
-      pending
-      # expect(subject.monthly_total).to eq ""
+      expect(subject.monthly_total).to eq find_monthly_total_for_test
     end
   end
 
   def task_params(time)
     { user_id: user.id, duration: 10000, updated_at: time }
+  end
+
+  def find_monthly_total_for_test
+    Task.where("updated_at >= ?", Time.current.beginning_of_month).
+      map(&:duration).map(&:to_i).reduce(&:+)
   end
 end
