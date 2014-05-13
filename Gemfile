@@ -25,7 +25,7 @@ group :test do
   gem "faker", "~> 1.3.0"
   gem "launchy", "~> 2.4.0"
   gem "rake"
-  gem "selenium-webdriver", "~> 2.33"
+  gem "poltergeist"
 end
 
 group :production do
