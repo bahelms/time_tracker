@@ -4,6 +4,13 @@ describe TasksController do
   let(:user) { create(:user) }
   before { sign_in user }
 
+  describe "GET #index" do
+    it "renders the index template" do
+      get :index
+      expect(response).to render_template :index
+    end
+  end
+
   describe "POST #create" do
     let!(:task_params) do
       { task: { name: "test task", project_id: "" } }

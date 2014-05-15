@@ -1,4 +1,9 @@
 class TasksController < ApplicationController
+  def index
+    @tasks = TasksDecorator.new(Task.where(user_id: current_user.id))
+    @projects = Project.where(user_id: current_user.id)
+  end
+
   def create
     task = Task.create!(task_params.merge(user_id: current_user.id))
     render json: { id: task.id }
