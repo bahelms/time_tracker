@@ -30,6 +30,10 @@ class TaskDecorator
     task.project ? task.project.name : nil
   end
 
+  def duration_in_minutes
+    duration.to_i / 60
+  end
+
   private
     def set_name
       task.name.blank? ? "(unknown task)" : task.name

@@ -54,6 +54,10 @@ body {
     }
     .task_duration {
       text-align: right;
+      #task_duration_field {
+        width: 80px;
+        display: none;
+      }
     }
   }
 }

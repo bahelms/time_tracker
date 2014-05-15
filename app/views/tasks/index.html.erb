@@ -1,29 +1,26 @@
-<div class="row">
-  <div class="col-xs-12" id="stopwatch">
-    <div class="col-xs-6 col-xs-offset-1">
-      <%= text_field_tag "task", nil, placeholder: "Enter task name here", 
-        id: "task_field", role: "task_field" %>
-    </div>
-    <div class="col-xs-2" id="select_project">
-      <%= select_tag "projects", 
-        options_from_collection_for_select(@projects, "id", "name"), 
-        prompt: "-- Select Project --", class: "form-control", 
-        role: "select_project" %>
-    </div>
-    <div class="col-xs-1" id="clock_label">
-      <%= label_tag "timer", "00:00:00.0", role: "clock_label" %>
-    </div>
-    <div class="col-xs-1" id="stopwatch_button">
-      <%= button_tag "Start", class: "btn btn-success", role: "stopwatch_button" %>
+<section id="tasks_page" role="tasks_page">
+  <div class="row">
+    <div class="col-xs-12" id="stopwatch">
+      <div class="col-xs-6 col-xs-offset-1">
+        <%= text_field_tag "task", nil, placeholder: "Enter task name here", 
+          id: "task_field", role: "task_field" %>
+      </div>
+      <div class="col-xs-2" id="select_project">
+        <%= select_tag "projects", 
+          options_from_collection_for_select(@projects, "id", "name"), 
+          prompt: "-- Select Project --", class: "form-control", 
+          role: "select_project" %>
+      </div>
+      <div class="col-xs-1" id="clock_label">
+        <%= label_tag "timer", "00:00:00.0", role: "clock_label" %>
+      </div>
+      <div class="col-xs-1" id="stopwatch_button">
+        <%= button_tag "Start", class: "btn btn-success", role: "stopwatch_button" %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row" id="time_entry_list" role="time_entry_list">
-  <%= render "all_tasks_for_week" %>
-</div>
-
-<div class="row" id="graph_footer">
-  <%# <%= render "graph_footer" %1> %>
-</div>
-
+  <div class="row" id="time_entry_list" role="time_entry_list">
+    <%= render "all_tasks_for_week" %>
+  </div>
+</section>

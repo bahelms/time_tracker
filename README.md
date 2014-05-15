@@ -10,10 +10,10 @@ TODO
 ----
 * Manual time setting
 * Boolean for logged time
+* Function to combine all of the same tasks into one
 * Delete Tasks?
 * Fix reset password mailer
 * Use unicorn server
-* Refactor dashboard out and default to task controller
 
 
 Test
