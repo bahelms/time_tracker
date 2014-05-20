@@ -4,12 +4,17 @@ jQuery ->
 
 class TasksController
   constructor: (@$container) ->
-    @$taskDuration = @$container.find($("@task_duration"))
     @handleTaskDurationClick()
+    @handleTaskDurationFocusOut()
 
   handleTaskDurationClick: ->
-    @$container.on "click", @$taskDuration, (e) ->
-      console.log $(e.target).find($("@task_duration_field"))
-      $(e.target).find($("@duration_value")).hide()
-      $(e.target).find($("@task_duration_field")).show()
+    @$container.on "click", $("@duration_value"), (e) ->
+      $field = $(e.target).siblings()
+      $(e.target).hide()
+      $field.show()
+      $field.focus()
 
+  handleTaskDurationFocusOut: ->
+    @$container.on "focusout", $("@task_duration_field"), (e) ->
+      $(e.target).hide()
+      $(e.target).siblings().show()
