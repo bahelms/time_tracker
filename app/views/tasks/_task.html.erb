@@ -8,8 +8,8 @@
   </div>
 
   <div class="col-xs-1 task_duration" role="task_duration">
-    <span role="duration_value"><%= task.duration_formatted %></span>
-    <%= text_field_tag "task_duration", "#{task.duration_in_minutes} min", 
+    <span class="duration_value"><%= task.duration_formatted %></span>
+    <%= text_field_tag "task_duration", task.find_duration, 
       role: "task_duration_field", id: "task_duration_field" %>
   </div>
 

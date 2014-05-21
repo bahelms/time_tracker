@@ -3,4 +3,12 @@ class Task < ActiveRecord::Base
   validates :user_id, presence: true
   default_scope { order(updated_at: :desc) }
   belongs_to :project
+
+  def minutes
+    duration.to_i / 60
+  end
+
+  def hours
+    duration.to_i / 3600
+  end
 end

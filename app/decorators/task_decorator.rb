@@ -2,7 +2,7 @@ class TaskDecorator
   include TimePresenter
   attr_reader :task, :name
   delegate :id, :time, :start_time, :stop_time, :duration, :user_id,
-           :created_at, :updated_at, :project, to: :task
+           :created_at, :updated_at, :project, :minutes, :hours, to: :task
 
   def initialize(task)
     @task = task
@@ -30,8 +30,14 @@ class TaskDecorator
     task.project ? task.project.name : nil
   end
 
-  def duration_in_minutes
-    duration.to_i / 60
+  def find_duration
+    if duration.to_i >= 3600
+      "#{hours} hours"
+    elsif duration.to_i >= 60
+      "#{minutes} mins"
+    else
+      "#{duration} secs"
+    end
   end
 
   private

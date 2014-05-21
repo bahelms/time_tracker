@@ -8,7 +8,7 @@ class TasksController
     @handleTaskDurationFocusOut()
 
   handleTaskDurationClick: ->
-    @$container.on "click", $("@duration_value"), (e) ->
+    @$container.on "click", ".duration_value", (e) ->
       $field = $(e.target).siblings()
       $(e.target).hide()
       $field.show()
