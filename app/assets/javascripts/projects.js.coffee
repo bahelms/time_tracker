@@ -7,7 +7,7 @@ class ProjectsController
     @$createButton = $("@create_project_button")
     @$projectNameField = $("@project_name_field")
     @$projectsList = $("@projects_list")
-    @$deleteButton = $("@delete_project")
+    @$deleteButton = $(".delete_project")
     @handleCreate()
     @handleDelete()
 

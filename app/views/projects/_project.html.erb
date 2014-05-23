@@ -4,6 +4,7 @@
   </div>
   <div class="col-xs-2 pull-right delete_project_button">
     <%= link_to "Delete", project_path(project.id), method: :delete, 
-      class: "btn btn-danger btn-xs", remote: true, role: "delete_project" %>
+      class: "btn btn-danger btn-xs delete_project", remote: true, 
+      role: "delete_project" %>
   </div>
 </div>

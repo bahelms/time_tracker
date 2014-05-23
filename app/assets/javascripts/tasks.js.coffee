@@ -15,6 +15,7 @@ class TasksController
       $field.focus()
 
   handleTaskDurationFocusOut: ->
-    @$container.on "focusout", $("@task_duration_field"), (e) ->
+    @$container.on "focusout", ".task_duration_field", (e) ->
+      console.log $(e.target)
       $(e.target).hide()
       $(e.target).siblings().show()
