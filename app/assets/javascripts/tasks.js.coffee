@@ -4,8 +4,17 @@ jQuery ->
 
 class TasksController
   constructor: (@$container) ->
+    @initPopover()
     @handleTaskDurationClick()
     @handleTaskDurationFocusOut()
+
+  initPopover: ->
+    @$container.popover(
+      html: true
+      content: $("@popover_form").html()
+      placement: "bottom"
+      selector: "[rel=popover]"
+    )
 
   handleTaskDurationClick: ->
     @$container.on "click", ".duration_value", (e) ->
@@ -16,6 +25,7 @@ class TasksController
 
   handleTaskDurationFocusOut: ->
     @$container.on "focusout", ".task_duration_field", (e) ->
-      console.log $(e.target)
       $(e.target).hide()
+      $(e.target).siblings().popover("hide")
       $(e.target).siblings().show()
+
