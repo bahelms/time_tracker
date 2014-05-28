@@ -4,14 +4,16 @@ jQuery ->
 
 class TasksController
   constructor: (@$container) ->
+    @$popoverForm = $("@popover_form")
     @initPopover()
     @handleTaskDurationClick()
-    @handleTaskDurationFocusOut()
+    @handleTaskDurationBlur()
 
   initPopover: ->
+    self = @
     @$container.popover(
       html: true
-      content: $("@popover_form").html()
+      content: self.$popoverForm.html()
       placement: "bottom"
       selector: "[rel=popover]"
     )
@@ -23,9 +25,12 @@ class TasksController
       $field.show()
       $field.focus()
 
-  handleTaskDurationFocusOut: ->
-    @$container.on "focusout", ".task_duration_field", (e) ->
-      $(e.target).hide()
-      $(e.target).siblings().popover("hide")
-      $(e.target).siblings().show()
+  handleTaskDurationBlur: ->
+    self = @
+    @$container.on "blur", ".task_duration_field", (e) ->
+      if self.$popoverForm.children().is(":focus")
+      # if $("@manual_start_time").has(":focus").length
+        $(e.target).hide()
+        $(e.target).siblings().popover("hide")
+        $(e.target).siblings().show()
 
