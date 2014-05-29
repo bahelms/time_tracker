@@ -11,11 +11,13 @@
     <span class="duration_value" data-toggle="popover" rel="popover">
       <%= task.duration_formatted %>
     </span>
-    <%= text_field_tag "task_duration", task.find_duration, 
-      class: "task_duration_field", id: "task_duration_field" %>
   </div>
 
-  <div class="col-xs-3 time_span">
-    <small><%= task.time_span %></small>
+  <div class="col-xs-3 time_span_div">
+    <small class="time_span"><%= task.time_span %></small>
+    <div class="time_span_edit">
+      <%= text_field_tag "time_start", 0, class: "time_start" %>
+      <%= text_field_tag "time_end", 0, class: "time_end" %>
+    </div>
   </div>
 </div>

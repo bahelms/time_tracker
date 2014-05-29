@@ -1,16 +1,12 @@
 @import "shared_mixins";
 
-body {
-  background-color: #fff;
-}
+body { background-color: #fff; }
 
 #stopwatch {
   background-color: #fff;
   text-align: center;
   margin: 30px 0 10px -25px;
-  .col-xs-1 { 
-    padding: 0; 
-  }
+  .col-xs-1 {  padding: 0;  }
   #task_field {
     @include box_shadow_rounded;
     width: 90%;
@@ -22,19 +18,13 @@ body {
     font-family: "Alegreya Sans", serif;
     font-size: xx-large;
   }
-  #reset_button {
-    margin-left: -25px;
-  }
-  #select_project {
-    margin: 1px 0 0 -40px;
-  }
+  #reset_button { margin-left: -25px; }
+  #select_project { margin: 1px 0 0 -40px; }
 }
 
 .time_entries_day {
   margin: 30px 0 0 140px;
-  .well {
-    margin-bottom: 5px;
-  }
+  .well { margin-bottom: 5px; }
   .header {
     font-size: large;
     a {
@@ -43,15 +33,11 @@ body {
     }
   }
 
-  .task_list {
-    margin-top: 5px;
-  }
+  .task_list { margin-top: 5px; }
 
   .task {
     font-family: "Open Sans", serif;
-    .time_span {
-      text-align: right;
-    }
+    .time_span_div { text-align: right; }
     .task_duration {
       text-align: right;
       #task_duration_field {
@@ -60,9 +46,11 @@ body {
         display: none;
       }
     }
+    .time_span_div {
+      .time_span_edit { display: none; }
+      input { width: 80px; }
+      .time_start { float: left; }
+    }
   }
 }
 
-.popover_form {
-  display: none;
-}
