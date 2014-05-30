@@ -35,7 +35,16 @@ body { background-color: #fff; }
 
   .task_list { margin-top: 5px; }
 
+  .task_container { 
+    button {
+      width: 7em;
+      margin: 1.667em 0 0 0.833em;
+      display: none;
+    }
+  }
+
   .task {
+    margin-left: 65px;
     font-family: "Open Sans", serif;
     .time_span_div { text-align: right; }
     .task_duration {
@@ -48,7 +57,10 @@ body { background-color: #fff; }
     }
     .time_span_div {
       .time_span_edit { display: none; }
-      input { width: 80px; }
+      input { 
+        width: 80px; 
+        height: 20px;
+      }
       .time_start { float: left; }
     }
   }

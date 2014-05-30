@@ -9,14 +9,13 @@ class TasksController
 
   handleTaskTimeSpanClick: ->
     @$container.on "click", ".time_span", (e) ->
-      $field = $(e.target).siblings()
-      $(e.target).hide()
-      $field.show()
-      $field.focus()
+      $time_field = $(e.target)
+      $field = $time_field.siblings()
+      $time_field.hide()
+      $time_field.siblings().show()
+      $time_field.siblings().focus()
 
   handleTaskTimeSpanEditBlur: ->
     @$container.on "blur", ".time_span_edit", (e) ->
-      console.log $(e.target)
-      $(e.target).hide()
-      $(e.target).siblings().show()
+      $(e.target).children().hide()
 

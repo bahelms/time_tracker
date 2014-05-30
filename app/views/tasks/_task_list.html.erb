@@ -1,11 +1,13 @@
-<section class="col-xs-9 time_entries_day" role="time_entries_day">
-  <%= render "tasks/header", tasks: tasks, num: num %>
+<section class="row">
+  <div class="col-xs-12 time_entries_day" role="time_entries_day">
+    <%= render "tasks/header", tasks: tasks, num: num %>
 
-  <div class="row collapse <%= tasks.first.collapsed? %>" id="collapse<%= num %>">
-    <div class="col-xs-12 task_list">
-      <% tasks.each do |task| %>
-        <%= render "tasks/task", task: task %>
-      <% end %>
+    <div class="row collapse <%= tasks.first.collapsed? %>" id="collapse<%= num %>">
+      <div class="row task_list">
+        <% tasks.each do |task| %>
+          <%= render "tasks/task", task: task %>
+        <% end %>
+      </div>
     </div>
   </div>
 </section>

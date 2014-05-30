@@ -30,26 +30,16 @@ class TaskDecorator
     task.project ? task.project.name : nil
   end
 
-  def find_duration
-    if duration.to_i >= 3600
-      "#{hours} hours"
-    elsif duration.to_i >= 60
-      "#{minutes} mins"
-    else
-      "#{duration} secs"
-    end
+  def start_time_formatted
+    Time.at(start_time.to_i).strftime("%l:%M:%S %p")
+  end
+
+  def stop_time_formatted
+    Time.at(stop_time.to_i).strftime("%l:%M:%S %p")
   end
 
   private
     def set_name
       task.name.blank? ? "(unknown task)" : task.name
-    end
-
-    def start_time_formatted
-      Time.at(start_time.to_i).strftime("%l:%M:%S %p")
-    end
-
-    def stop_time_formatted
-      Time.at(stop_time.to_i).strftime("%l:%M:%S %p")
     end
 end

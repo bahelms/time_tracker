@@ -1,23 +1,32 @@
-<div class="row task well" data-id=<%= task.id %> role="tasks">
-  <div class="col-xs-6">
-    Task: <%= task.name %>
-  </div>
+<div class="row task_container">
+  <div class="col-xs-8 task well" data-id=<%= task.id %> role="tasks">
+    <div class="col-xs-6">
+      Task: <%= task.name %>
+    </div>
 
-  <div class="col-xs-2 project_name">
-    <%= task.project_name %>
-  </div>
+    <div class="col-xs-2 project_name">
+      <%= task.project_name %>
+    </div>
 
-  <div class="col-xs-1 task_duration" role="task_duration">
-    <span class="duration_value" data-toggle="popover" rel="popover">
-      <%= task.duration_formatted %>
-    </span>
-  </div>
+    <div class="col-xs-1 task_duration" role="task_duration">
+      <span class="duration_value" data-toggle="popover" rel="popover">
+        <%= task.duration_formatted %>
+      </span>
+    </div>
 
-  <div class="col-xs-3 time_span_div">
-    <small class="time_span"><%= task.time_span %></small>
-    <div class="time_span_edit">
-      <%= text_field_tag "time_start", 0, class: "time_start" %>
-      <%= text_field_tag "time_end", 0, class: "time_end" %>
+    <div class="col-xs-3 time_span_div">
+      <small class="time_span"><%= task.time_span %></small>
+      <div class="time_span_edit">
+        <%= text_field_tag "time_start", task.start_time_formatted, 
+          class: "time_start" %>
+        <%= text_field_tag "time_end", task.stop_time_formatted, 
+          class: "time_end" %>
+      </div>
     </div>
   </div>
+
+  <%= button_tag "Apply", 
+    class: "col-xs-1 btn btn-xs btn-primary", 
+    data: { task_id: task.id },
+    role: "manual_time_button" %>
 </div>
