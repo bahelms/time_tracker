@@ -50,10 +50,6 @@ describe TasksController do
         expect(task.stop_time.to_i).to eq 1000
       end
 
-      it "saves duration" do
-        expect(task.duration.to_i).to eq 60
-      end
-
       it "returns the task id in json" do
         expect(JSON.parse(response.body)["id"]).to eq Task.last.id
       end
@@ -62,8 +58,7 @@ describe TasksController do
 
   describe "PATCH #update" do
     let!(:task) { create(:task, user_id: user.id, start_time: 500) }
-    let!(:time_data) { { "stop_time" => "203", "duration" => "123" } }
-    # let(:project) { }
+    let!(:time_data) { { "stop_time" => "203" } }
 
     context "(with a task name)" do
       before(:each) do

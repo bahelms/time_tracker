@@ -17,12 +17,15 @@ class TasksController < ApplicationController
   end
 
   def manual_update
-    #TODO protect against start times being later than stop times
-    #TODO consider tasks spanning multiple days
     @task.start_time = convert_time(params[:start_time])
     @task.stop_time  = convert_time(params[:stop_time])
-    @task.save!
-    render_all_tasks_for_week
+
+    if @task.start_time <= @task.stop_time
+      @task.save!
+      render_all_tasks_for_week
+    else
+      render json: { failed: true }
+    end
   end
 
   private
@@ -32,7 +35,6 @@ class TasksController < ApplicationController
         :project_id,
         :start_time,
         :stop_time,
-        :duration
       )
     end
 

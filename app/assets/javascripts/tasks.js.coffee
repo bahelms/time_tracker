@@ -31,7 +31,6 @@ class TasksController
       $button = $(e.target)
       start = $button.parent().find(".time_start").val()
       stop = $button.parent().find(".time_stop").val()
-      console.log start
       self.updateTime($button.data("id"), start, stop)
 
   updateTime: (task_id, start, stop) ->
@@ -42,8 +41,11 @@ class TasksController
         id: task_id
         start_time: start
         stop_time: stop
-      success: (partial) ->
-        $("@time_entry_list").html(partial)
+      success: (data) ->
+        if data.failed
+          alert("Start time must be before stop time")
+        else
+          $("@time_entry_list").html(data)
       error: ->
         console.log "You can't manually update for crap."
         console.log "Start: #{start}; Stop: #{stop}; Task ID: #{task_id}"

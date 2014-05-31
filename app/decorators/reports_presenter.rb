@@ -23,7 +23,7 @@ class ReportsPresenter
   private
     def duration_sum(time)
       secs = provider.send("tasks_for_#{time}").compact.
-        map(&:duration).map(&:to_i).reduce(&:+)
+        map(&:duration).reduce(&:+)
       secs.nil? ? 0 : secs
     end
 end

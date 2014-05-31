@@ -6,6 +6,5 @@ FactoryGirl.define do
     time ""
     start_time ""
     stop_time ""
-    duration ""
   end
 end

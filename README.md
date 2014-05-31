@@ -8,10 +8,12 @@ tasks.
 
 TODO
 ----
-* Manual time setting
+* Fix oversized layout on task index
+* Add project after task is created
 * Boolean for logged time
 * Function to combine all of the same tasks into one
 * Delete Tasks?
+* Have tasks span multiple days? Would need to have calendar for manual input
 * Fix reset password mailer
 * Use unicorn server
 

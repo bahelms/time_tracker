@@ -14,7 +14,7 @@ namespace "Task", (window) ->
           name: $("@task_field").val()
           project_id: ""
           start_time: @startTime = @findSeconds()
-          duration: 0
+          stop_time: @startTime
         success: (data) =>
           @task_id = data.id
           $("@task_field").data("task_id", @task_id)
@@ -28,7 +28,6 @@ namespace "Task", (window) ->
         url: "tasks/#{@task_id}"
         data: task:
           stop_time: @stopTime = @findSeconds()
-          duration: @stopTime - @startTime
           project_id: $("@select_project").val()
         success: (partial) ->
           $("@time_entry_list").html(partial)
