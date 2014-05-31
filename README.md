@@ -20,5 +20,4 @@ Test
 ----
 * JS tests
 * Task Decorator
-* Time Presenter
 * Dashboard stopwatch feature

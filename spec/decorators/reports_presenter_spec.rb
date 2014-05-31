@@ -35,6 +35,6 @@ describe ReportsPresenter do
   end
 
   def task_params(time)
-    { user_id: user.id, duration: 10000, updated_at: time }
+    { user_id: user.id, duration: 10000, created_at: time }
   end
 end

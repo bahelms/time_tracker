@@ -8,9 +8,9 @@ class TasksDecorator
   end
 
   def grouped_by_day
-    days = tasks_for_week.map { |task| task.updated_at.localtime.day }.uniq
+    days = tasks_for_week.map { |task| task.created_at.localtime.day }.uniq
     days.map do |day|
-      tasks_for_week.select { |task| task.updated_at.localtime.day == day }
+      tasks_for_week.select { |task| task.created_at.localtime.day == day }
     end
   end
 
@@ -22,6 +22,6 @@ class TasksDecorator
     def tasks_for(time)
       range = Time.current.localtime.send("beginning_of_#{time}")..
         Time.current.localtime
-      tasks.where(updated_at: range)
+      tasks.where(created_at: range)
     end
 end

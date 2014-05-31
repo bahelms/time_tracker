@@ -7,8 +7,8 @@ describe TasksDecorator do
 
   before(:each) do
     4.times { create(:task, user_id: user.id) }
-    2.times { create(:task, user_id: user.id, updated_at: 1.day.ago) }
-    2.times { create(:task, user_id: user.id, updated_at: 2.weeks.ago) }
+    2.times { create(:task, user_id: user.id, created_at: 1.day.ago) }
+    2.times { create(:task, user_id: user.id, created_at: 2.weeks.ago) }
   end
 
   describe "#tasks_for_week" do
@@ -34,7 +34,7 @@ describe TasksDecorator do
       if monday?
         expect(tasks_by_day.last.map(&:id)).to eq Task.first(4).map(&:id)
       else
-        expect(tasks_by_day.last.map(&:id)).to eq Task.all.to_a[4..5].map(&:id)
+        expect(tasks_by_day.last.map(&:id)).to eq Task.all[4..5].map(&:id)
       end
     end
   end

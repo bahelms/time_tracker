@@ -29,6 +29,22 @@ class TasksController
     self = @
     @$container.on "click", ".manual_time_button", (e) ->
       $button = $(e.target)
-      time_start = $button.parent().find("@time_start").val()
-      # TODO update manual tim
-      # self.updateTime
+      start = $button.parent().find(".time_start").val()
+      stop = $button.parent().find(".time_stop").val()
+      console.log start
+      self.updateTime($button.data("id"), start, stop)
+
+  updateTime: (task_id, start, stop) ->
+    $.ajax(
+      type: "PATCH"
+      url: "tasks/manual_update"
+      data:
+        id: task_id
+        start_time: start
+        stop_time: stop
+      success: (partial) ->
+        $("@time_entry_list").html(partial)
+      error: ->
+        console.log "You can't manually update for crap."
+        console.log "Start: #{start}; Stop: #{stop}; Task ID: #{task_id}"
+    )

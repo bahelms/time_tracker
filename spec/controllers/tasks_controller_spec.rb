@@ -63,7 +63,7 @@ describe TasksController do
   describe "PATCH #update" do
     let!(:task) { create(:task, user_id: user.id, start_time: 500) }
     let!(:time_data) { { "stop_time" => "203", "duration" => "123" } }
-    let(:project) { }
+    # let(:project) { }
 
     context "(with a task name)" do
       before(:each) do
@@ -103,5 +103,45 @@ describe TasksController do
       patch :update, id: task.id, task: time_data
       expect(response).to render_template partial: "_all_tasks_for_week"
     end
+  end
+
+  describe "PATCH #manual_update" do
+    let!(:task) { create_task(user, "1401513190", "1401556891") }
+    let!(:time_params) do
+      { id: task.id, start_time: " 1:23:10 pm", stop_time: " 2:51:04 pm" }
+    end
+
+    context "(when times are different)" do
+      it "saves the new start time for the task" do
+        old_start = task.start_time
+        patch :manual_update, time_params
+        expect(task.reload.start_time).not_to eq old_start
+      end
+
+      it "saves the new stop time for the task" do
+        old_stop = task.stop_time
+        patch :manual_update, time_params
+        expect(task.reload.start_time).not_to eq old_stop
+      end
+    end
+
+    context "(when times are the same)" do
+      let!(:time_params2) do
+        { id: task.id, start_time: " 1:13:10 pm", stop_time: " 2:51:04 pm" }
+      end
+
+      it "saves the new start time for the task" do
+        old_start = task.start_time
+        patch :manual_update, time_params2
+        expect(task.reload.start_time).to eq old_start
+      end
+    end
+  end
+
+  def create_task(user, start, stop)
+    create(:task,
+           user_id: user.id,
+           start_time: start,
+           stop_time: stop)
   end
 end
