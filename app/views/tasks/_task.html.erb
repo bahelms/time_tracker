@@ -18,15 +18,15 @@
       <small class="time_span"><%= task.time_span %></small>
       <div class="time_span_edit">
         <%= text_field_tag "time_start", task.start_time_formatted, 
-          class: "time_start" %>
+          class: "time_start", role: "time_start" %>
         <%= text_field_tag "time_end", task.stop_time_formatted, 
-          class: "time_end" %>
+          class: "time_end", role: "time_end" %>
       </div>
     </div>
   </div>
 
   <%= button_tag "Apply", 
-    class: "col-xs-1 btn btn-xs btn-primary", 
-    data: { task_id: task.id },
+    class: "col-xs-1 btn btn-xs btn-primary manual_time_button", 
+    data: { id: task.id },
     role: "manual_time_button" %>
 </div>

@@ -18,4 +18,5 @@
 //= require stopwatch_class.js
 //= require jquery.validate.min
 //= require additional-methods.min
+//= require app_setup
 //= require_tree .
