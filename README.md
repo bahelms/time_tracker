@@ -24,6 +24,7 @@ Prod Problems
 * Times are local to wherever the heroku server is
 * Applying new time while task is running shows incomplete task after ajax
 * New project is not inserting via ajax, it just displays the full partial
+* Session timeout is too short; still says true on session timeout redirect
 
 Test
 ----
